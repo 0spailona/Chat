@@ -4,10 +4,10 @@ export default class UserView{
   }
   drawUser(user){
     this.user = user;
-    const {id,name} = this.user;
+    const {name} = this.user;
     const userWRP = document.createElement('div');
     userWRP.classList.add('userWRP');
-    userWRP.dataset.id = id;
+    //userWRP.dataset.id = id;
 
     const userImg = document.createElement('div');
     userImg.style.background = 'lightgray';
@@ -17,6 +17,9 @@ export default class UserView{
 
     const userName = document.createElement('span');
     userName.textContent = name;
+    if(name === 'You'){
+      userName.classList.add('currentUser')
+    }
     userName.classList.add('userName');
 
     userWRP.appendChild(userName);

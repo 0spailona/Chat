@@ -10,10 +10,10 @@
 <div class="desk" id="root">
   <form class="registerForm">
     <label class="modalTitle" for="name">Choose name</label>
-    <input class="input nameInput" id="name" name="name" required type="text">
+    <input class="input nameInput" id="name" name="name" maxlength="10" required type="text">
     <button class="btn okBtn">Continue</button>
   </form>
-  <div class="modal__group">
+  <div class="modalGroup">
     <div class="usersListAndLeaveBtn">
     <div class="users"></div>
     <button class="btn leaveChat">Leave chat</button>
@@ -21,7 +21,7 @@
     <div class="chatWindow">
       <div class="messageContainer"></div>
       <form class="chatConnect">
-        <textarea class="inputMessage" placeholder="Type message"></textarea>
+        <textarea class="inputMessage" name="msg" placeholder="Type message"></textarea>
         <button class="btn sendMessage">Send</button>
       </form>
     </div>
