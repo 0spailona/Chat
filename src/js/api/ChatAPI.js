@@ -1,7 +1,6 @@
 export default class ChatAPI {
   constructor(url, eventHandlers) {
-    this.url = url;
-    this.ws = new WebSocket('ws://localhost:3000/ws');
+    this.ws = new WebSocket(url);
     this.ws.addEventListener('open', this.onOpen.bind(this))
     this.ws.addEventListener('message', this.onMessage.bind(this))
     this.eventHandlers = eventHandlers;
