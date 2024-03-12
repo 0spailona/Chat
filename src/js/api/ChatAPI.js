@@ -10,8 +10,6 @@ export default class ChatAPI {
   onRegister(user) {
     const data = {type: 'register', user}
     const json = JSON.stringify(data);
-    //console.log(json)
-
     this.ws.send(json)
   }
 
@@ -20,40 +18,39 @@ export default class ChatAPI {
   }
 
   onClose() {
-
+    const data = {type: 'exit'}
+    const json = JSON.stringify(data);
+    this.ws.send(json)
   }
 
-  onError() {
 
-  }
-
-  onSendMsg(msg){
-    const data = {type:'send',data:msg.msg}
+  onSendMsg(msg) {
+    const data = {type: 'send', data: msg.msg}
     const json = JSON.stringify(data)
-    console.log('onSendApi',json)
     this.ws.send(json)
   }
 
   onMessage(e) {
-    console.log('onMSg', e.data)
     const data = JSON.parse(e.data)
 
     switch (data.type) {
       case 'error':
-        this.eventHandlers.onError?.call(this, data.reason)
+        this.eventHandlers.onError?.call(this, {msg:data.reason, command:data.command})
         break;
-      case 'ok': //console.log('ok', data)
+      case 'ok':
+        console.log('ok', data.command)
         if (data.command === 'register') {
           this.eventHandlers.addCurrentUser?.call(this, data.user)
         } else if (data.command === 'exit') {
           console.log('exit')
+          this.eventHandlers.leaveChat.call(this)
         }
         break;
-      case 'users': //console.log('users',data.users)
+      case 'users':
         this.eventHandlers.onRenderChat?.call(this, data.users)
         break;
       case 'message':
-        this.eventHandlers.drawMessage?.call(this, {from: data.from, msg: data.data})
+        this.eventHandlers.drawMessage?.call(this, {from: data.from, msg: data.data, created: data.created})
     }
 
   }

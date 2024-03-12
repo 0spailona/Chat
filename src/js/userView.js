@@ -1,13 +1,13 @@
-export default class UserView{
+export default class UserView {
   constructor(container) {
     this.container = container
   }
-  drawUser(user){
+
+  drawUser(user) {
     this.user = user;
     const {name} = this.user;
     const userWRP = document.createElement('div');
     userWRP.classList.add('userWRP');
-    //userWRP.dataset.id = id;
 
     const userImg = document.createElement('div');
     userImg.style.background = 'lightgray';
@@ -17,7 +17,7 @@ export default class UserView{
 
     const userName = document.createElement('span');
     userName.textContent = name;
-    if(name === 'You'){
+    if (name === 'You') {
       userName.classList.add('currentUser')
     }
     userName.classList.add('userName');

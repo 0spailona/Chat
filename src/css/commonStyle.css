@@ -125,6 +125,7 @@ body {
   right: 0;
   display: flex;
   flex-direction: column;
+  gap: 20px;
   width: 70%;
   height: 95%;
   padding: 10px;
@@ -135,7 +136,11 @@ body {
 
 .messageContainer{
   flex: 1;
-  overflow-scrolling: auto;
+  display: flex;
+  flex-direction: column;
+  gap:20px;
+  padding: 10px;
+  overflow: auto;
 }
 
 .chatConnect{
@@ -156,19 +161,30 @@ body {
 .messageWRP{
   display: flex;
   flex-direction: column;
-  padding-inline: 10px;
-  border: 1px solid green;
+  gap:20px;
+  padding: 10px;
 }
 
-.messageWRP .currentUserMsg{
-  justify-content: end;
+.messageWRP.currentUserMsg{
+  align-items: end;
+
 }
 
-.messageWRP .otherUsersMsg{
+.messageWRP.otherUsersMsg{
   justify-content: start;
 }
 
 .authorAndDateWrp{
   display: inline-flex;
+  font-size: 14px;
+}
+
+
+.authorAndDateWrp.currentUserMsg{
+  color: darkred;
+}
+
+.message{
+  font-size: 18px;
 }
 
