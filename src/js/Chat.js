@@ -5,7 +5,7 @@ import MessageView from "./MessageView";
 export default class Chat {
   constructor(container) {
     this.container = container;
-    this.api = new ChatAPI('http://localhost:10000', {
+    this.api = new ChatAPI('https://chatapi-puv7.onrender.com', {
       onOpenConnection: this.onOpenConnection.bind(this),
       onError: this.showAlert.bind(this),
       onRenderChat: this.renderChatWindows.bind(this),
